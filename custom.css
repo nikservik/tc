@@ -8,4 +8,6 @@
 .ui.comments .comment {padding-top: 0;}
 .ui.menu .item i.toggle.icon {cursor:pointer;}
 .hidden {display: none;}
-.ui.compact.small.table {margin-left: 1em;}
+i.minus.icon {cursor:pointer;}
+.comment.collap .comments .comment {display: none;}
+.ui.compact.small.tables {margin-left: 1em;}

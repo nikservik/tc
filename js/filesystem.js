@@ -57,6 +57,11 @@ function setTitle() {
       currentEntry,
       function(path) {
         $('#path').text(path);
+        var file = path.split('/').pop();
+        file = file.split('.');
+        file.pop();
+        file = file.join('.');
+        $('#title').text(file)
       });
 }
 

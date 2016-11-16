@@ -53,12 +53,13 @@ function checkVisibility(e) {
 
 function newNode() {
 	var node = $('<div>', {class: 'comment', type:0}).on('change', checkVisibility);
-	node.append($('<div>', {class: 'avatar'}).html('<i class="' + types[0].icon + ' ' + types[0].color + ' icon"></i>'));
+	node.append($('<div>', {class: 'avatar'}).html('<i class="minus tiny grey icon"></i><i class="' + types[0].icon + ' ' + types[0].color + ' icon" type="icon"></i>'));
 	node.append($('<div>', {class: 'content'}).html(
 		$('<textarea>', {placeHolder: 'Новый элемент', rows: 1})
 			.on('change keyup keydown paste cut', textareaAutoresize)
 	));
 	node.append($('<div>', {class: 'comments'}));
+	node.children('.avatar').on('click','i.minus',toggleCollapse);
 	return node;
 }
 
@@ -91,7 +92,7 @@ function getType(node) {
 
 function setType(node, type) {
 	node.attr('type', type);
-	node.find('i').first().removeClass()
+	node.find('i[type="type"]').first().removeClass()
 		.addClass(types[type].icon + ' ' + types[type].color + ' icon');
 }
 
@@ -115,6 +116,16 @@ function toggleType(e) {
 		$('[type=\'' + index + '\']').change();
 	} else {
 		$('[type=\'' + index + '\']').removeClass('hidden');
+	}
+}
+
+function toggleCollapse(e) {
+	$(e.target).toggleClass('square');
+
+	if ($(e.target).hasClass('square')) {
+		thisNode(e.target).addClass('collap');
+	} else {
+		thisNode(e.target).removeClass('collap');
 	}
 }
 
