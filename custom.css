@@ -1,0 +1,11 @@
+#path {color: #ccc; font-size: 0.8em;}
+.ui.menu { margin: 0.5em auto 3em;}
+.content:hover {background-color: #f5f5f5;}
+.ui.comments .comment .content textarea{margin:0; padding:0; border:0; border-radius:0;resize: none;}
+.ui.comments .comment .content { padding:0.25em;}
+.ui.comments div.comment div.comments {padding-bottom:0;padding-top:0;border-left:1px solid #eee;}
+.comment .comments .comment:first-child {padding-top: 0.5em;}
+.ui.comments .comment {padding-top: 0;}
+.ui.menu .item i.toggle.icon {cursor:pointer;}
+.hidden {display: none;}
+.ui.compact.small.table {margin-left: 1em;}
