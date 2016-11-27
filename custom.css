@@ -1,13 +1,29 @@
+html, body {overflow-y: visible; padding-top: 2em; }
 #path {color: #ccc; font-size: 0.8em;}
-.ui.menu { margin: 0.5em auto 3em;}
-.content:hover {background-color: #f5f5f5;}
+
+/*адаптация размеров comments -> разделы*/
 .ui.comments .comment .content textarea{margin:0; padding:0; border:0; border-radius:0;resize: none;}
 .ui.comments .comment .content { padding:0.25em;}
 .ui.comments div.comment div.comments {padding-bottom:0;padding-top:0;border-left:1px solid #eee;}
 .comment .comments .comment:first-child {padding-top: 0.5em;}
 .ui.comments .comment {padding-top: 0;}
+
+/*выключатель типа в верхнем меню*/
 .ui.menu .item i.toggle.icon {cursor:pointer;}
 .hidden {display: none;}
+
+/*сворачиватель дочерних разделов*/
 i.minus.icon {cursor:pointer;}
 .comment.collap .comments .comment {display: none;}
-.ui.compact.small.tables {margin-left: 1em;}
+
+i#collapse, i#expand, i#expand1, i#expand2  {cursor:pointer;}
+
+/*размеры шрифтов для разных уровней*/
+/*1*/
+.ui.comments > .comment > .content > textarea{font-weight: bold; font-size: 1.1rem}
+/*2*/
+.ui.comments > .comment > .comments > .comment > .content > textarea{font-weight: bold;}
+/*3*/
+/*4*/
+.ui.comments > .comment > .comments > .comment > .comments > .comment > .comments > .comment  .content  textarea{font-size: 0.9rem}
+

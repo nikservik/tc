@@ -10,7 +10,7 @@ function init(launchData) {
     frame: 'chrome',
     minWidth: 800,
     minHeight: 400,
-    width: 1240,
+    width: 1300,
     height: 800
   };
 

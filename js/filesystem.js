@@ -3,15 +3,21 @@ var autoSaveMode = false;
 var saved = true;
 
 function initFile(entry) {
-  $('#open').click(openFile);
-  $('#save').click(saveFile);
-  $('#saveas').click(saveAsFile);
   chrome.runtime.getBackgroundPage(function(bg) {
     if (bg.entryToLoad)
       loadEntry(bg.entryToLoad);
     else
       initStructure();
   });
+  setSavedStatus(true);
+}
+
+function newFile() {
+  $('.ui.comments').children().remove();
+  currentEntry = null;
+  $('#path').text('Новая структура');
+  $('#title').text('');
+  initStructure();
   setSavedStatus(true);
 }
 

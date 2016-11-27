@@ -3,6 +3,18 @@ function keyListener(event) {
 	// Shift + Return = добавление перед этим
 	// console.log(event.keyCode)
 	if(event.which == 13) { // Return
+		if (event.altKey) {
+			if (event.target.selectionStart || event.target.selectionStart == '0') {
+		        var startPos = event.target.selectionStart;
+		        var endPos = event.target.selectionEnd;
+		        event.target.value = event.target.value.substring(0, startPos)
+		            + '\n'
+		            + event.target.value.substring(endPos, event.target.value.length);
+		    } else {
+		        event.target.value += '\n';
+		    }			
+			return false;
+		}
 		event.preventDefault();
 		// добавить узел после этого
 		var node = newNode();
@@ -86,8 +98,32 @@ function keyListener(event) {
 		return false;
 	}
 
-	// Cmd + up = фокус вверх
-	if (event.keyCode == 38 && (event.ctrlKey || event.metaKey)) {
+	// Cmd + up = сдвиг вверх
+	if (event.which == 38 && (event.ctrlKey || event.metaKey)) {
+		event.preventDefault();
+		var prev = thisNode(event.target).prev();
+		if (prev.is('.comment')) {
+			var node = thisNode(event.target).detach();
+			node.insertBefore(prev);
+			node.find('textarea').first().focus();
+			return false;
+		}
+	}
+
+	// Cmd + down = сдвиг вниз
+	if (event.which == 40 && (event.ctrlKey || event.metaKey)) {
+		event.preventDefault();
+		var next = thisNode(event.target).next();
+		if (next.is('.comment')) {
+			var node = thisNode(event.target).detach();
+			node.insertAfter(next);
+			node.find('textarea').first().focus();
+			return false;
+		}
+	}
+
+	// up = фокус вверх
+	if (event.keyCode == 38 && $(event.target).taliner().caretOnFirstLine) {
 		event.preventDefault();
 		// сначала пробуем предыдущий в списке у родителя
 		var prev = thisNode(event.target).prev();
@@ -107,8 +143,8 @@ function keyListener(event) {
 		return false;
 	}
 
-	// Cmd + down = фокус вниз
-	if (event.keyCode == 40 && (event.ctrlKey || event.metaKey)) {
+	// down = фокус вниз
+	if (event.keyCode == 40 && $(event.target).taliner().caretOnLastLine) {
 		event.preventDefault();
 		// сначала пробуем найти первый дочерний узел
 		var next = thisNode(event.target).find('.comment').first();

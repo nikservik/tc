@@ -9,19 +9,24 @@
     <link rel="stylesheet" type="text/css" href="custom.css">
 </head>
 <body>
-    <div class="ui container right aligned" id="path">Новая структура</div>
-    <div class="ui container menu">
+    <div class="ui top fixed menu" id="types">
         <div class="header item">#КоТ</div>
-        <div class="menu" id="types">
-        </div>
-        <div class="right menu">
+        <div class="menu">
             <div class="item">
-                <a href="#" id="open" title="Открыть схему"><i class="folder open outline icon"></i></a>
-                <a href="#" id="save" title="Сохранить"><i class="save icon"></i></a>
-                <a href="#" id="saveas" title="Сохранить как..."><i class="save fitted icon"></i><i class="write fitted icon"></i></a>
+                <a href="#" id="new" data-tooltip="Создать структуру" data-position="bottom left"><i class="file outline  icon"></i></a>
+                <a href="#" id="open" data-tooltip="Открыть структуру" data-position="bottom left"><i class="folder open yellow icon"></i></a>
+                <a href="#" id="save" data-tooltip="Сохранить" data-position="bottom left"><i class="save icon"></i></a>
+                <a href="#" id="saveas" data-tooltip="Сохранить как..." data-position="bottom left"><i class="save fitted icon"></i><i class="write fitted icon"></i></a>
+            </div>
+            <div class="item expander">
+                <a href="#" id="collapse" data-tooltip="Свернуть все" data-position="bottom left"><i class="caret right icon"></i></a>
+                <a href="#" id="expand1" data-tooltip="Развернуть только 1-й уровень" data-position="bottom left"><i class="caret down fitted icon"></i>1</a>&nbsp;&nbsp;
+                <a href="#" id="expand2" data-tooltip="Развернуть 1-й и 2-й уровень" data-position="bottom left"><i class="caret down fitted icon"></i>2</a>
+                <a href="#" id="expand" data-tooltip="Развернуть все" data-position="bottom left"><i class="caret down icon"></i></a>
             </div>
         </div>
     </div>
+    <div class="ui container right aligned" id="path">Новая структура</div>
 
     <div class="ui text container" id="structure">
         <div class="ui basic segment">
@@ -30,18 +35,18 @@
                 <div class="ui basic segment">
                     <table class="ui compact small table">
                     <tbody>
-                        <tr><td>Enter</td><td>добавить раздел</td></tr>
-                        <tr><td>Shift+Enter</td><td>добавить раздел ПЕРЕД</td></tr>
+                        <tr><td>Enter</td><td>добавить раздел после</td></tr>
+                        <tr><td>Shift+Enter</td><td>добавить раздел перед</td></tr>
                         <tr><td>Tab</td><td>добавить подраздел</td></tr>
                         <tr><td>Shift+Tab</td><td>добавить раздел на уровень выше</td></tr>
                         <tr><td>Ctrl+Del</td><td>удалить раздел</td></tr>
-                        <tr><td>Ctrl+&larr;</td><td>Сдвинуть на уровень влево</td></tr>
-                        <tr><td>Ctrl+&rarr;</td><td>Сдвинуть на уровень вправо</td></tr>
-                        <tr><td>Ctrl+&uarr;</td><td>Перейти к предыдущему</td></tr>
-                        <tr><td>Ctrl+&darr;</td><td>Перейти к следующему</td></tr>
-                        <tr><td>Ctrl+<i>цифра</i></td><td>Назначить тип разделу</td></tr>
-                        <tr><td>Ctrl+O</td><td>Открыть файл</td></tr>
-                        <tr><td>Ctrl+S</td><td>Сохранить файл</td></tr>
+                        <tr><td>Ctrl+&larr;</td><td>сдвинуть на уровень влево</td></tr>
+                        <tr><td>Ctrl+&rarr;</td><td>сдвинуть на уровень вправо</td></tr>
+                        <tr><td>Ctrl+&uarr;</td><td>переместить вверх</td></tr>
+                        <tr><td>Ctrl+&darr;</td><td>переместить вниз</td></tr>
+                        <tr><td>Ctrl+<i>цифра</i></td><td>назначить тип разделу</td></tr>
+                        <tr><td>Ctrl+O</td><td>открыть файл</td></tr>
+                        <tr><td>Ctrl+S</td><td>сохранить файл</td></tr>
                     </tbody>
                     </table>
                 </div>
@@ -54,6 +59,7 @@
     </div>
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script>
+    <script src="js/taliner.js"></script>
     <script src="js/semantic.min.js"></script>
     <script src="js/config.js"></script>
     <script src="js/keyboard.js"></script>

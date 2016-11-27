@@ -7,9 +7,20 @@ $(document).ready(function(entry) {
     			.html('<i class="toggle on icon"></i>'
     				+ index + '. '+ item.name
     			)
-    		).on('click','i',toggleType);
+    		);
     });
+    $("#types .item.active").on('click','i',toggleType);
 
+    // привязка файлового меню
+	$('#new').click(newFile);
+	$('#open').click(openFile);
+	$('#save').click(saveFile);
+	$('#saveas').click(saveAsFile);
+
+	$('#collapse').click(expander);
+	$('#expand1').click(expander);
+	$('#expand2').click(expander);
+	$('#expand').click(expander);
 
     // обработка нажатий клавиатуры
     $('#structure').on('keydown', 'textarea', keyListener);
@@ -92,7 +103,7 @@ function getType(node) {
 
 function setType(node, type) {
 	node.attr('type', type);
-	node.find('i[type="type"]').first().removeClass()
+	node.find('[type="icon"]').first().removeClass()
 		.addClass(types[type].icon + ' ' + types[type].color + ' icon');
 }
 
@@ -108,8 +119,7 @@ function setValue(node, value) {
 
 function toggleType(e) {
 	$(e.target).toggleClass('on').toggleClass('off');
-	var index = $(e.target).parent().text().split('.');
-	index = index[0];
+	var index = $(e.target).parent().text().split('.').shift();
 
 	if ($(e.target).hasClass('off')) {
 		$('[type=\'' + index + '\']').addClass('hidden');
@@ -143,5 +153,27 @@ function setSavedStatus(status) {
 		$('#save').children('i').removeClass('red').addClass('green');
 	} else {
 		$('#save').children('i').removeClass('green').addClass('red');
+	}
+}
+
+function expander(e) {
+	if($(e.currentTarget).attr('id') == 'collapse') {
+		$('.ui.comments>.comment').addClass('collap')
+			.children('.avatar').children('i.minus').addClass('square');
+	} else if ($(e.currentTarget).attr('id') == 'expand1') {
+		$('.ui.comments>.comment').removeClass('collap')
+			.children('.avatar').children('i.minus').removeClass('square');
+		$('.ui.comments>.comment>.comments>.comment').addClass('collap')
+			.children('.avatar').children('i.minus').addClass('square');
+	} else if ($(e.currentTarget).attr('id') == 'expand2') {
+		$('.ui.comments>.comment').removeClass('collap')
+			.children('.avatar').children('i.minus').removeClass('square');
+		$('.ui.comments>.comment>.comments>.comment').removeClass('collap')
+			.children('.avatar').children('i.minus').removeClass('square');
+		$('.ui.comments>.comment>.comments>.comment>.comments>.comment').addClass('collap')
+			.children('.avatar').children('i.minus').addClass('square');
+	} else if ($(e.currentTarget).attr('id') == 'expand') {
+		$('.ui.comments .comment').removeClass('collap')
+			.children('.avatar').children('i.minus').removeClass('square');
 	}
 }
